@@ -1,0 +1,31 @@
+To use entity framework:
+	Create a DataContext that inherits from DbContext.
+	Each model should has a DbSet, which represents the table inside the database for the model.
+	appsettings.json needs to have a "ConnectionStrings" key with a "DefaultConnection" value in it.
+	Startup.cs inside ConfigureServices method, call:
+		services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")))
+	Commands:
+		dotnet ef -v
+		dotnet ef migrations add InitialCreate
+			-- create a migration folder with initial migration classes.
+					-DataSnapshot: To keep track of which migrations were executed in the database.
+					-InitialCreate: Similar to ruby. The actual migration file with instructions to create the tables (up to create, down to drop) 
+			*migrations: will create the tables from the models inside the DataContext class
+		dotnet ef database update
+			-- if the database does not exists, it will create it.
+			-- it will execute the migration cs files.
+			*table _EFMigrationsHistory - keep the migrations executed in the database.
+
+
+	Controllers:
+		IActionsResult return allows you to return an http response (OK, etc)
+
+	VsCode Extensions:
+		c#
+		C# Extensions
+		Debugger for chrome
+		Material icon theme
+		Nuget package manager
+		Path intellisense
+		prettier - code formatter
+		tslint
