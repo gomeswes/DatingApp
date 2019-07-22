@@ -29,3 +29,7 @@ To use entity framework:
 		Path intellisense
 		prettier - code formatter
 		tslint
+
+	User migration:
+		dotnet ef migrations add AddedUserEntity
+		dotnet ef database update
