@@ -9,6 +9,7 @@ import { AlerftifyService } from '../_services/alerftify.service';
 })
 export class NavComponent implements OnInit {
   model: any = {};
+  
   constructor(private authService: AuthService, private alertify: AlerftifyService) { }
 
   ngOnInit() {
@@ -16,9 +17,15 @@ export class NavComponent implements OnInit {
 
   login() {
     this.authService.login(this.model).subscribe(
-      next => { this.alertify.success('Welcome! Logged in Successfully'); },
+      next => {
+        this.alertify.success('Welcome! Logged in Successfully');
+      },
       error => { this.alertify.error(error); }
     );
+  }
+
+  getLoggedInUserName() {
+    return this.authService.decodedToken.unique_name;
   }
 
   loggedIn() {
