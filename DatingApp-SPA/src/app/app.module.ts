@@ -15,7 +15,8 @@ import { AlerftifyService } from './_services/alerftify.service';
 import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { appRoutes } from './routes';
-import { MemberListComponent } from './member-list/member-list.component';
+import { MemberListComponent } from './members/member-list/member-list.component';
+import { MemberCardComponent } from './members/member-card/member-card.component';
 import { UserService } from './_services/user.service';
 
 
@@ -28,7 +29,8 @@ import { UserService } from './_services/user.service';
       RegisterComponent,
       ListsComponent,
       MessagesComponent,
-      MemberListComponent
+      MemberListComponent,
+      MemberCardComponent
    ],
    imports: [
       BrowserModule,
