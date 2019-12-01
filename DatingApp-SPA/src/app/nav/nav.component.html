@@ -16,9 +16,9 @@
       <div *ngIf="loggedIn()" class="dropdown" dropdown>
         <a class="dropdown-toggle text-light" dropdownToggle>
           <span class="mr-1">
-            <img src="{{authService.currentUser.photoUrl}}" alt="">
+            <img src="{{photoUrl}}" alt="">
           </span>
-          come {{ getLoggedInUserName() | titlecase }}
+          Wellcome {{ getLoggedInUserName() | titlecase }}
         </a>
       
         <div class="dropdown-menu mt-3" *dropdownMenu>
