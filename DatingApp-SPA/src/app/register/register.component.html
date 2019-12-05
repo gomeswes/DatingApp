@@ -3,12 +3,54 @@
   <hr>
 
   <div class="form-group">
+    <label class="control-label" style="margin-right:10px">I am a: </label>
+    <label class="radio-inline">
+      <input type="radio" value="male" formControlName="gender" class="mr-3">Male
+    </label>
+    <label class="radio-inline">
+      <input type="radio" class="mr-3" value="female" formControlName="gender">Female
+    </label>
+  </div>
+
+  <div class="form-group">
     <input type="text"
      [ngClass]="{'is-invalid': registerForm.get('username').errors && registerForm.get('username').touched}"
      class="form-control"
      placeholder="username" 
      formControlName="username">
      <div class="invalid-feedback">Plase choose a username</div>
+  </div>
+
+  <div class="form-group">
+    <input type="text" [ngClass]="{'is-invalid': registerForm.get('knownAs').errors && registerForm.get('knownAs').touched}"
+      class="form-control" placeholder="Known as" formControlName="knownAs">
+    <div class="invalid-feedback" *ngIf="registerForm.get('knownAs').touched && registerForm.get('knownAs').hasError('required')">
+      Known as is required
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input [ngClass]="{'is-invalid': registerForm.get('dateOfBirth').errors && registerForm.get('dateOfBirth').touched}"
+      type="date" class="form-control"
+      placeholder="Date of Birth" formControlName="dateOfBirth">
+    <div class="invalid-feedback" *ngIf="registerForm.get('dateOfBirth').touched && registerForm.get('dateOfBirth').hasError('required')">
+      Date of birth is required
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input [ngClass]="{'is-invalid': registerForm.get('city').errors && registerForm.get('city').touched}"
+      type="text" class="form-control"
+      placeholder="City" formControlName="city">
+    <div class="invalid-feedback" *ngIf="registerForm.get('city').touched && registerForm.get('city').hasError('required')" >City is required</div>
+  </div>
+
+  <div class="form-group">
+    <input [ngClass]="{'is-invalid': registerForm.get('country').touched && registerForm.get('country').errors}"
+      type="text" class="form-control"
+      placeholder="Country" formControlName="country">
+    <div *ngIf="registerForm.get('country').touched && registerForm.get('country').hasError('required')"
+      class="invalid-feedback">Country is required</div>
   </div>
 
   <div class="form-group">
@@ -53,15 +95,7 @@
   </div>
 
   <div class="form-group text-center">
-    <button class="btn btn-success" type="submit">Register</button>
+    <button class="btn btn-success" [disabled]="!registerForm.valid" type="submit">Register</button>
     <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>
   </div>
 </form>
-
-
-<p>
-  Form value: {{registerForm.value | json}}
-</p>
-<p>
-  Form state: {{registerForm.status | json}}
-</p>
