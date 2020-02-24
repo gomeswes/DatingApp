@@ -15,6 +15,6 @@ export class MemberListComponent implements OnInit {
       private activatedRoute: ActivatedRoute ) { }
 
   ngOnInit() {
-    this.activatedRoute.data.subscribe(data => this.users = data['users']);
+    this.activatedRoute.data.subscribe(data => this.users = data['users'].result);
   }
 }
